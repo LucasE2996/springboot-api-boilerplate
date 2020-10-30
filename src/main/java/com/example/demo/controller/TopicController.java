@@ -8,6 +8,8 @@ import com.example.demo.modelo.Topic;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -19,7 +21,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,6 +34,7 @@ public class TopicController {
     private CourseRepository courseRepository;
 
     @GetMapping
+    @Cacheable(value = "topicList")
     public Page<TopicDTO> listAllTopics(
             @RequestParam(required = false) String courseName,
             @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pageable
@@ -47,6 +49,7 @@ public class TopicController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "topicList", allEntries = true)
     public ResponseEntity<TopicDTO> createTopic(
             @RequestBody @Valid TopicForm topicForm,
             UriComponentsBuilder uriBuilder
@@ -72,6 +75,7 @@ public class TopicController {
 
     @PutMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "topicList", allEntries = true)
     public ResponseEntity<TopicDTO> update(@PathVariable Long id, @RequestBody @Valid UpdateTopicFormDTO form) {
         // validate if the entity exists in the DB
         final Optional<Topic> optional = topicRepository.findById(id);
@@ -84,6 +88,7 @@ public class TopicController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "topicList", allEntries = true)
     public ResponseEntity<?> delete(@PathVariable Long id) {
         // validate if the entity exists in the DB
         Optional<Topic> optional = topicRepository.findById(id);
