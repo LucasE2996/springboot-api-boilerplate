@@ -9,9 +9,9 @@ import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -35,12 +35,8 @@ public class TopicController {
     @GetMapping
     public Page<TopicDTO> listAllTopics(
             @RequestParam(required = false) String courseName,
-            @RequestParam int page,
-            @RequestParam int size,
-            @RequestParam String orderBy
+            @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pageable
     ) {
-        final Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, orderBy);
-
         Page<Topic> topics;
         if (courseName == null)
             topics = topicRepository.findAll(pageable);
