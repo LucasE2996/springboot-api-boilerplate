@@ -2,10 +2,9 @@ package com.example.demo.controller.dto;
 
 import com.example.demo.modelo.Topic;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 public class TopicDTO {
@@ -22,7 +21,7 @@ public class TopicDTO {
         this.creationDate = topic.getCreationDate();
     }
 
-    public static List<TopicDTO> convert(List<Topic> topics) {
-        return topics.stream().map(TopicDTO::new).collect(Collectors.toList());
+    public static Page<TopicDTO> convert(Page<Topic> topics) {
+        return topics.map(TopicDTO::new);
     }
 }

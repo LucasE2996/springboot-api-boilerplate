@@ -1,11 +1,11 @@
 package com.example.demo.repository;
 
 import com.example.demo.modelo.Topic;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface TopicRepository extends JpaRepository<Topic, Long> {
 
-    List<Topic> findByCourseName(String name);
+    Page<Topic> findByCourseName(String name, Pageable pageable);
 }

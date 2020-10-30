@@ -8,6 +8,10 @@ import com.example.demo.modelo.Topic;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +33,15 @@ public class TopicController {
     private CourseRepository courseRepository;
 
     @GetMapping
-    public List<TopicDTO> listAllTopics(String courseName) {
-        List<Topic> topics;
+    public Page<TopicDTO> listAllTopics(
+            @RequestParam(required = false) String courseName,
+            @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pageable
+    ) {
+        Page<Topic> topics;
         if (courseName == null)
-            topics = topicRepository.findAll();
+            topics = topicRepository.findAll(pageable);
         else
-            topics = topicRepository.findByCourseName(courseName);
+            topics = topicRepository.findByCourseName(courseName, pageable);
         return TopicDTO.convert(topics);
     }
 
