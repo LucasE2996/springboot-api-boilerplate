@@ -1,4 +1,4 @@
-package com.example.demo.controller.dto;
+package com.example.demo.controller.form;
 
 import com.example.demo.modelo.Course;
 import com.example.demo.modelo.Topic;

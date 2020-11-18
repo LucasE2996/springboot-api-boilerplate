@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.dto.TopicDetailDTO;
-import com.example.demo.controller.dto.TopicForm;
+import com.example.demo.controller.form.TopicForm;
 import com.example.demo.controller.dto.TopicDTO;
-import com.example.demo.controller.dto.UpdateTopicFormDTO;
+import com.example.demo.controller.form.UpdateTopicForm;
 import com.example.demo.modelo.Topic;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
@@ -76,7 +76,7 @@ public class TopicController {
     @PutMapping("/{id}")
     @Transactional
     @CacheEvict(value = "topicList", allEntries = true)
-    public ResponseEntity<TopicDTO> update(@PathVariable Long id, @RequestBody @Valid UpdateTopicFormDTO form) {
+    public ResponseEntity<TopicDTO> update(@PathVariable Long id, @RequestBody @Valid UpdateTopicForm form) {
         // validate if the entity exists in the DB
         final Optional<Topic> optional = topicRepository.findById(id);
 
