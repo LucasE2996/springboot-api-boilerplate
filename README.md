@@ -34,3 +34,8 @@ This endpoint if configurable to show up any relevant information you may want t
 info.app.name=@project.name@
 info.app.version=@project.version@
 ```
+
+## Spring boot admin
+
+There is an open source project called spring-boot-admin that help us a lot on monitoring Spring Boot applications.
+I have already implemented this solution in another project/repo so if you want to get it up and running easily with this boilerplate download [this project](https://github.com/LucasE2996/spring-boot-admin) and follow the instructions there.
