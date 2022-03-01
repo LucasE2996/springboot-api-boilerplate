@@ -4,7 +4,7 @@ import com.example.demo.controller.dto.TopicDetailDTO;
 import com.example.demo.controller.form.TopicForm;
 import com.example.demo.controller.dto.TopicDTO;
 import com.example.demo.controller.form.UpdateTopicForm;
-import com.example.demo.modelo.Topic;
+import com.example.demo.model.Topic;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;

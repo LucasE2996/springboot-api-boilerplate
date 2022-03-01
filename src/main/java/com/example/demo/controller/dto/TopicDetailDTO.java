@@ -1,7 +1,7 @@
 package com.example.demo.controller.dto;
 
-import com.example.demo.modelo.Topic;
-import com.example.demo.modelo.TopicStatus;
+import com.example.demo.model.Topic;
+import com.example.demo.model.TopicStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
 package com.example.demo.controller.form;
 
-import com.example.demo.modelo.Topic;
+import com.example.demo.model.Topic;
 import com.example.demo.repository.TopicRepository;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

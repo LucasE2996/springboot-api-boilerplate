@@ -1,6 +1,6 @@
 package com.example.demo.config.swagger;
 
-import com.example.demo.modelo.User;
+import com.example.demo.model.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

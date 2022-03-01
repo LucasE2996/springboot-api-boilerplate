@@ -1,7 +1,7 @@
 package com.example.demo.controller.form;
 
-import com.example.demo.modelo.Course;
-import com.example.demo.modelo.Topic;
+import com.example.demo.model.Course;
+import com.example.demo.model.Topic;
 import com.example.demo.repository.CourseRepository;
 
 import lombok.Data;

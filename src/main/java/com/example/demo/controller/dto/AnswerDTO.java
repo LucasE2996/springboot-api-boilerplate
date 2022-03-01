@@ -1,6 +1,6 @@
 package com.example.demo.controller.dto;
 
-import com.example.demo.modelo.Answer;
+import com.example.demo.model.Answer;
 import lombok.Data;
 
 import java.time.LocalDateTime;

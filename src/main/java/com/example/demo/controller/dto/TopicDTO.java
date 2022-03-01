@@ -1,6 +1,6 @@
 package com.example.demo.controller.dto;
 
-import com.example.demo.modelo.Topic;
+import com.example.demo.model.Topic;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 
