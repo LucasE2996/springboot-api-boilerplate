@@ -21,7 +21,7 @@ public class AuthService implements UserDetailsService {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent())
             return user.get();
-        throw new UsernameNotFoundException("Wrong sign in data");
+        throw new UsernameNotFoundException("User not found");
     }
 
 }

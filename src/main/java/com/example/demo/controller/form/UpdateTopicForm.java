@@ -2,23 +2,26 @@ package com.example.demo.controller.form;
 
 import com.example.demo.model.Topic;
 import com.example.demo.repository.TopicRepository;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Data
 public class UpdateTopicForm {
 
-    @NotNull @NotEmpty @Length(min = 5)
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String title;
 
-    @NotNull @NotEmpty @Length(min = 5)
+    @NotNull
+    @NotEmpty
+    @Length(min = 5)
     private String message;
 
     public Topic update(TopicRepository repository, Long topicId) {
-        Topic topic = repository.getOne(topicId);
+        Topic topic = repository.getReferenceById(topicId);
 
         topic.setMessage(message);
         topic.setTitle(title);

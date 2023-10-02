@@ -1,9 +1,9 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,30 +13,30 @@ import java.util.List;
 @NoArgsConstructor
 public class Topic {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Enumerated(EnumType.STRING)
-	private TopicStatus status = TopicStatus.NOT_ANSWERED;
+    @Enumerated(EnumType.STRING)
+    private TopicStatus status = TopicStatus.NOT_ANSWERED;
 
-	@ManyToOne
-	private User author;
+    @ManyToOne
+    private User author;
 
-	@ManyToOne
-	private Course course;
+    @ManyToOne
+    private Course course;
 
-	@OneToMany(mappedBy = "topic")
-	private List<Answer> answers = new ArrayList<>();
+    @OneToMany(mappedBy = "topic")
+    private List<Answer> answers = new ArrayList<>();
 
-	private String title;
-	private String message;
-	private LocalDateTime creationDate = LocalDateTime.now();
+    private String title;
+    private String message;
+    private LocalDateTime creationDate = LocalDateTime.now();
 
-	public Topic(String title, String message, Course course) {
-		this.title = title;
-		this.message = message;
-		this.course = course;
-	}
+    public Topic(String title, String message, Course course) {
+        this.title = title;
+        this.message = message;
+        this.course = course;
+    }
 
 }
