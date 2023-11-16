@@ -1,12 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.dto.TopicDTO;
 import com.example.demo.controller.dto.TopicDetailDTO;
 import com.example.demo.controller.form.TopicForm;
-import com.example.demo.controller.dto.TopicDTO;
 import com.example.demo.controller.form.UpdateTopicForm;
 import com.example.demo.model.Topic;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.TopicRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.Optional;
 
